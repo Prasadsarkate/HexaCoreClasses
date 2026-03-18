@@ -1,0 +1,156 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --radius: 1.25rem;
+    /* Deep Navy Blue theme with glassmorphism */
+    --background: 0 0% 98%;
+    --foreground: 215 25% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+    /* Primary: Deep Navy Blue (#1a2332) */
+    --primary: 215 30% 15%;
+    --primary-foreground: 0 0% 100%;
+    /* Secondary: Pure White with slight tint */
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 215 30% 15%;
+    --muted: 215 20% 92%;
+    --muted-foreground: 215 15% 45%;
+    /* Accent: Lighter navy for highlights */
+    --accent: 215 25% 88%;
+    --accent-foreground: 215 30% 15%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 20% 88%;
+    --input: 215 20% 88%;
+    --ring: 215 30% 15%;
+    --chart-1: 215 70% 50%;
+    --chart-2: 195 65% 55%;
+    --chart-3: 235 60% 60%;
+    --chart-4: 175 55% 50%;
+    --chart-5: 255 50% 55%;
+  }
+
+  .dark {
+    /* Dark mode: Navy background with lighter text */
+    --background: 215 30% 12%;
+    --foreground: 0 0% 95%;
+    --card: 215 28% 15%;
+    --card-foreground: 0 0% 95%;
+    --popover: 215 28% 15%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 95%;
+    --primary-foreground: 215 30% 15%;
+    --secondary: 215 25% 20%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 215 25% 20%;
+    --muted-foreground: 215 10% 65%;
+    --accent: 215 25% 22%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 25% 22%;
+    --input: 215 25% 22%;
+    --ring: 0 0% 95%;
+    --chart-1: 215 70% 60%;
+    --chart-2: 195 65% 65%;
+    --chart-3: 235 60% 70%;
+    --chart-4: 175 55% 60%;
+    --chart-5: 255 50% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Mobile safe area for notch devices */
+  .mobile-safe-area {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  /* Glassmorphism effect */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .glass-card-dark {
+    background: rgba(26, 35, 50, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Smooth scrolling */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide Google Drive pop-out button */
+  iframe[src*="drive.google.com"] {
+    pointer-events: auto;
+  }
+  
+  /* Prevent iframe from showing external link buttons */
+  .video-player-container {
+    position: relative;
+  }
+  
+  /* Block the top-right corner where Google Drive pop-out button appears */
+  .video-player-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: transparent;
+    pointer-events: auto;
+    z-index: 10;
+    cursor: default;
+  }
+  
+  /* Additional overlay for Google Drive videos specifically */
+  .video-player-container::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    pointer-events: auto;
+    z-index: 11;
+    cursor: default;
+  }
+}
